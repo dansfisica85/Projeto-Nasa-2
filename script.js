@@ -108,6 +108,32 @@ function sanitizeInput(input) {
     return element.innerHTML;
 }
 
+function obterTemperatura() {
+    const cultura = document.getElementById('cultura').value.toLowerCase();
+    const temperaturas = {
+        "soja": "A soja se desenvolve bem entre 20°C e 30°C, sendo que temperaturas muito acima de 35°C podem prejudicar a produção.",
+        "milho": "O milho prospera em temperaturas entre 18°C e 30°C, com a faixa ideal para o crescimento vegetativo entre 24°C e 30°C.",
+        "sorgo": "O sorgo se desenvolve melhor entre 25°C e 30°C, sendo tolerante a altas temperaturas.",
+        "cana-de-açúcar": "A cana-de-açúcar prefere temperaturas entre 25°C e 30°C, com crescimento ótimo entre 26°C e 33°C.",
+        "algodão": "O algodão cresce bem em temperaturas entre 25°C e 35°C, com uma temperatura ideal em torno de 30°C.",
+        "feijão": "O feijão se desenvolve melhor entre 18°C e 28°C, sendo sensível a extremos de calor ou frio.",
+        "pastagens": "Pastagens variam dependendo da espécie; forrageiras tropicais preferem entre 25°C e 30°C.",
+        "café": "O café prefere temperaturas entre 18°C e 24°C, com extremos podendo comprometer a produção.",
+        "trigo": "O trigo prospera entre 15°C e 25°C, com limites críticos acima de 30°C durante a fase de enchimento dos grãos.",
+        "amendoim": "O amendoim cresce melhor entre 25°C e 30°C, sendo sensível a temperaturas muito altas ou baixas.",
+        "eucalipto": "O eucalipto se desenvolve bem em temperaturas entre 18°C e 30°C, dependendo da espécie.",
+        "laranja": "A laranja cresce melhor entre 23°C e 32°C, com extremos prejudicando o desenvolvimento.",
+        "girassol": "O girassol prefere temperaturas entre 20°C e 30°C, com calor excessivo reduzindo a produção de óleo.",
+        "cevada": "A cevada prospera entre 15°C e 25°C, com altas temperaturas prejudicando a qualidade do grão.",
+        "uva": "A uva prefere temperaturas entre 18°C e 28°C, com calor excessivo prejudicando a qualidade dos frutos.",
+        "banana": "A banana se desenvolve melhor entre 26°C e 30°C, com crescimento limitado abaixo de 15°C e acima de 35°C.",
+        "tabaco": "O tabaco prospera entre 20°C e 30°C, com crescimento ótimo em torno de 27°C."
+    };
+
+    const resultado = temperaturas[cultura] || "Cultura não encontrada. Tente outra.";
+    document.getElementById('resultado').innerHTML = resultado;
+}
+
 function reloadPage() {
     window.location.reload();
 }
