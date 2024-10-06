@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroDecision</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHcJgZE23RJdz1x5bVUICmpbhLEo6yAWs&libraries=places" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>AgroDecision</h1>
+        <form id="cropForm">
+            <label for="cropType">Tipo de Cultura:</label>
+            <input type="text" id="cropType" name="cropType" required><br><br>
+
+            <label for="location">Localização:</label>
+            <input type="text" id="location" name="location" required><br><br>
+
+            <label for="startDate">Data do Plantio:</label>
+            <input type="date" id="startDate" name="startDate" required><br><br>
+
+            <label for="endDate">Data da Colheita:</label>
+            <input type="date" id="endDate" name="endDate" required><br><br>
+
+            <label for="minTemp">Temperatura Mínima (°C):</label>
+            <input type="number" id="minTemp" name="minTemp" required><br><br>
+
+            <label for="maxTemp">Temperatura Máxima (°C):</label>
+            <input type="number" id="maxTemp" name="maxTemp" required><br><br>
+
+            <label for="csvFile">Carregar Arquivo CSV:</label>
+            <input type="file" id="csvFile" name="csvFile" accept=".csv" onchange="loadCSV(event)"><br><br>
+
+            <div class="button-group">
+                <button type="button" onclick="fetchData()">Buscar Dados</button>
+                <button type="button" onclick="reloadPage()">Voltar à Página Inicial</button>
+            </div>
+        </form>
+        <div id="output"></div>
+        <div id="cropConditions"></div>
+    </div>
+</body>
+</html>
