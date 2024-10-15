@@ -3,40 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroDecision</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHcJgZE23RJdz1x5bVUICmpbhLEo6yAWs&libraries=places" async defer></script>
-    <script src="script.js" defer></script>
+    <title>Cálculos Do AgroDecision</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
-        <header>
-            <img src="Agro Decision icone color.svg" alt="Logo AgroDecision" class="logo">
-            <h1>AgroDecision</h1>
-        </header>
-        <body>
-            <h5>Consulte as condições climáticas ideais para sua colheita !!!</h5>
-            <input type="text" id="cultura" placeholder="Digite o nome da cultura">
-            <button onclick="obterTemperatura()">Ver Temperatura</button>
-            <p id="resultado"></p>
-        </body>
-        <form id="cropForm">
-            <label for="cropType">Tipo de Cultura da colheita:</label>
-            <input type="text" id="cropType" name="cropType" required><br><br>
-
-            <label for="location">Localização:</label>
-            <input type="text" id="location" name="location" required><br><br>
-
-            <label for="startDate">Data do Plantio:</label>
-            <input type="date" id="startDate" name="startDate" required><br><br>
-
-            <label for="endDate">Previsão da Colheita:</label>
-            <input type="date" id="endDate" name="endDate" required><br><br>
-
-            <button type="button" onclick="fetchData()">Buscar Dados</button>
+        <h1>Cálculos Do AgroDecision</h1>
+        <h2>FASE UM DOS CÁLCULOS</h2>
+        <form id="calcForm">
+            <label for="latitude">Latitude:</label>
+            <input type="number" id="latitude" name="latitude" step="0.0001" required><br><br>
+            <label for="longitude">Longitude:</label>
+            <input type="number" id="longitude" name="longitude" step="0.0001" required><br><br>
+            <label for="cc">Capacidade de Campo (CC) %:</label>
+            <input type="number" id="cc" name="cc" required><br><br>
+            <label for="pi">Porcentagem Inicial de Umidade (PI) %:</label>
+            <input type="number" id="pi" name="pi" required><br><br>
+            <label for="apartirCicloCul">Apartir Ciclo Cul:</label>
+            <input type="number" id="apartirCicloCul" name="apartirCicloCul" required><br><br>
+            <label for="ateCicloCul">Ate Ciclo Cul:</label>
+            <input type="number" id="ateCicloCul" name="ateCicloCul" required><br><br>
+            <label for="etp">Evapotranspiração Potencial (ETp) %:</label>
+            <input type="number" id="etp" name="etp" required><br><br>
+            <label for="pua">Porcentagem de Umidade do Ar (PUA) %:</label>
+            <input type="number" id="pua" name="pua" required><br><br>
+            <label for="mf">Fator Mensal (MF):</label>
+            <input type="number" id="mf" name="mf" required><br><br>
+            <label for="t">Temperatura Média Mensal (T) ºC:</label>
+            <input type="number" id="t" name="t" required><br><br>
+            <label for="ur">Umidade Relativa Média Mensal (UR) %:</label>
+            <input type="number" id="ur" name="ur" required><br><br>
+            <button type="button" onclick="calcular()">Calcular</button>
         </form>
-        
-        <div id="output"></div>
+        <div class="result" id="result"></div>
+        <div id="loading" style="display: none;">
+            <div id="loadingText">Carregando...</div>
+            <div id="progressBarContainer">
+                <div id="progressBar"></div>
+            </div>
+        </div>
+        <div class="charts">
+            <canvas id="evaporationChart" width="400" height="200"></canvas>
+            <canvas id="lineChart" width="400" height="200"></canvas>
+        </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
